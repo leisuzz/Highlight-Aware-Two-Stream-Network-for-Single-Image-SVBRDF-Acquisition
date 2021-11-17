@@ -1,6 +1,3 @@
-import os, time, sys
-import itertools
-import pickle
 
 import tensorflow as tf
 import numpy as np
