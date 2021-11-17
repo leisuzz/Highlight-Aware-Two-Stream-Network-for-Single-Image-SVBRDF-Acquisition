@@ -1,4 +1,3 @@
-
 import tensorflow as tf
 import numpy as np
 from keras.layers import Dense, Activation, Conv2D,  Flatten, BatchNormalization
@@ -14,19 +13,16 @@ class GlobalDiscriminator():
         self.img_h = input_shape[1]
         self.img_w = input_shape[2]
 
-
-        self.conv1 = Conv2D(self.img_c, kernel_size=(5,5), stride=(2,2), padding=2)
-        self.conv1 = Conv2D(64, kernel_size=(5,5), stride=(2,2), padding=2)
+        self.conv1 = Conv2D(64, kernel_size=(5,5), stride=(2,2), padding=2)(self.img_c)
         self.bn1 = BatchNormalization()
         self.act1 = Activation('relu')
-
-        self.conv2 = Conv2D(128, kernel_size=(5,5), stride=(2,2), padding=2)
+        self.conv2 = Conv2D(128, kernel_size=(5,5), stride=(2,2), padding=2)(self.conv1)
         self.bn2 = BatchNormalization()
         self.act2 = Activation('relu')
-        self.conv3 = Conv2D(256, kernel_size=(5,5), stride=(2,2), padding=2)
+        self.conv3 = Conv2D(256, kernel_size=(5,5), stride=(2,2), padding=2)(self.conv2)
         self.bn3 = BatchNormalization()
         self.act3 = Activation('relu')
-        self.conv4 = Conv2D(512, kernel_size=(5,5), stride=(2,2), padding=2)
+        self.conv4 = Conv2D(512, kernel_size=(5,5), stride=(2,2), padding=2)(self.conv3)
         self.bn4 = BatchNormalization()
         self.act4 = Activation('relu')
 
@@ -67,17 +63,16 @@ class LocalDiscriminator():
         self.img_c = input_shape[0]
         self.img_h = input_shape[1]
         self.img_w = input_shape[2]
-        self.conv1 = Conv2D(self.img_c, kernel_size=(5,5), stride=(2,2), padding=2)
-        self.conv1 = Conv2D(64, kernel_size=(5,5), stride=(2,2), padding=2)
+        self.conv1 = Conv2D(64, kernel_size=(5,5), stride=(2,2), padding=2)(self.img_c)
         self.bn1 = BatchNormalization()
         self.act1 = Activation('relu')
-        self.conv2 = Conv2D(128, kernel_size=(5,5), stride=(2,2), padding=2)
+        self.conv2 = Conv2D(128, kernel_size=(5,5), stride=(2,2), padding=2)(self.conv1)
         self.bn2 = BatchNormalization()
         self.act2 = Activation('relu')
-        self.conv3 = Conv2D(256, kernel_size=(5,5), stride=(2,2), padding=2)
+        self.conv3 = Conv2D(256, kernel_size=(5,5), stride=(2,2), padding=2)(self.conv2)
         self.bn3 = BatchNormalization()
         self.act3 = Activation('relu')
-        self.conv4 = Conv2D(512, kernel_size=(5,5), stride=(2,2), padding=2)
+        self.conv4 = Conv2D(512, kernel_size=(5,5), stride=(2,2), padding=2)(self.conv3)
         self.bn4 = BatchNormalization()
         self.act4 = Activation('relu')
 
